@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 
-from config import get_image_url
 from src.recommend import recommender, topHit_emoji
 
 st.set_page_config(
@@ -24,7 +23,7 @@ rec_engine = recommender()
 if 'df_shop' not in st.session_state:
     df_shop = pd.read_csv("./data/shop_meta_data.csv", usecols=['shop_id', 'shop_photo', 'shop_category', 'shop_name'])
     df_shop['favorite'] = False
-    df_shop['shop_photo'] = df_shop['shop_photo'].apply(get_image_url)
+    df_shop['shop_photo'] = df_shop['shop_photo'].apply(lambda x: f'{st.secrets['BASE_URL']}{x}')
     st.session_state.df_shop = df_shop  # Store in session state
 
 
