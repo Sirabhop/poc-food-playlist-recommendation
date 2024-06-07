@@ -12,11 +12,6 @@ st.set_page_config(
 st.title('🍔 Robinhood Food Recommendation')
 st.markdown('POC **Multi-Modal Encoder** for Restaurant Recommendation')
 
-# Positive Feedback Section
-df_shop = pd.read_csv("./data/shop_meta_data.csv", usecols=['shop_id', 'shop_photo', 'shop_category', 'shop_name', ])
-df_shop['favorite'] = False
-df_shop['shop_photo'] = df_shop['shop_photo'].apply(lambda x: f"{st.secrets['BASE_URL']}{x}")
-
 rec_engine = recommender()
 
 # Initialize Session State
