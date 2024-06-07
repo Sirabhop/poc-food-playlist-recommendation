@@ -60,7 +60,6 @@ with st.form("favorite_section"):
               tile.title(topHit_emoji[dish_bubble[i]])
               tile.markdown(dish_bubble[i])
               
-              
         
         st.header("Playlist:")
         recommended_shop = rec_engine.get_playlist(df = st.session_state.df_shop, k=10)
