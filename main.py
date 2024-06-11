@@ -13,6 +13,7 @@ st.title('🍔 Robinhood Food Recommendation')
 st.markdown('POC **Multi-Modal Encoder** for Restaurant Recommendation')
 
 rec_engine = recommender()
+shop_db = pd.read_csv("./data/shop_meta_data.csv", usecols=['shop_id', 'shop_photo', 'shop_category', 'shop_name'])
 
 # Initialize Session State
 if 'df_shop' not in st.session_state:
@@ -57,9 +58,8 @@ with st.form("favorite_section"):
         
         st.header("Playlist:")
         recommended_shop = rec_engine.get_playlist(df = st.session_state.df_shop, k=10)
-        df_shop = st.session_state.df_shop
         playlist_df = st.data_editor(
-            df_shop.loc[df_shop.shop_id.isin(recommended_shop), ['shop_photo', 'shop_name']],
+            shop_db.loc[shop_db.shop_id.isin(recommended_shop), ['shop_photo', 'shop_name']],
             column_config={
                 "shop_photo": st.column_config.ImageColumn(
                         "Restaurant Image"
