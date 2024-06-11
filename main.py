@@ -57,6 +57,7 @@ with st.form("favorite_section"):
         
         st.header("Playlist:")
         recommended_shop = rec_engine.get_playlist(df = st.session_state.df_shop, k=10)
+        df_shop = st.session_state.df_shop
         playlist_df = st.data_editor(
             df_shop.loc[df_shop.shop_id.isin(recommended_shop), ['shop_photo', 'shop_name']],
             column_config={
