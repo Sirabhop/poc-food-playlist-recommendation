@@ -52,7 +52,7 @@ with st.form("favorite_section"):
         for i, col in enumerate(row):
               tile = col.container(height=140)
               tile.title(topHit_emoji[dish_bubble[i]])
-            #   tile.markdown(dish_bubble[i])
+              tile.markdown(dish_bubble[i])
               
         
         st.header("Playlist:")
