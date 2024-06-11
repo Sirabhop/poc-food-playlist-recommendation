@@ -14,6 +14,7 @@ st.markdown('POC **Multi-Modal Encoder** for Restaurant Recommendation')
 
 rec_engine = recommender()
 shop_db = pd.read_csv("./data/shop_meta_data.csv", usecols=['shop_id', 'shop_photo', 'shop_category', 'shop_name'])
+shop_db['shop_photo'] = shop_db['shop_photo'].apply(lambda x: f"{st.secrets['BASE_URL']}{x}")
 
 # Initialize Session State
 if 'df_shop' not in st.session_state:
